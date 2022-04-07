@@ -1018,13 +1018,24 @@ section {
   position: relative;
 }
 .events .card-img {
-  width: calc(100% + 60px);
-  margin-left: -30px;
+  width: calc(100%);
+  margin-left: 17%;
+  overflow: hidden;
+  z-index: 9;
+  border-radius: 0;
+}
+.events .card-img2 {
+  width: calc(100%);
+  margin-left: 12%;
   overflow: hidden;
   z-index: 9;
   border-radius: 0;
 }
 .events .card-img img {
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.events .card-img2 img {
   max-width: 100%;
   transition: all 0.3s ease-in-out;
 }
@@ -1407,7 +1418,7 @@ section {
 }
 #footer .credits {
   padding-top: 5px;
-  font-size: 13px;
+  font-size: 7px;
 }
 #footer .credits a {
   color: #65b5e2;
@@ -1581,9 +1592,30 @@ section {
   to { border-color: lightblue; }
 }
 
-.bottom-buffer { margin-bottom:70px; }
+.buffer { 
+  margin-bottom:70px;
+  margin-top:30px;
+}
+.buffer-top { 
+  margin-top:30px;
+}
+.buffer-bottom { 
+  margin-bottom:30px;
+}
+
+.minimize-top {
+  margin-top:-180px;
+}
+
+.minimize-top2 {
+  margin-top:-110px;
+}
 
 .icon-discord {
   background-image: url("../img/discord-v2.svg");
   background-position: center center;
+}
+
+.icon-white{
+  color: white;
 }

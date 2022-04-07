@@ -47,7 +47,7 @@ document.write(`
 
   </nav><!-- .navbar -->
 
-  <a href="courses.html" class="get-started-btn">Contact</a>
+  <a class="get-started-btn" onClick="document.getElementById('end').scrollIntoView();">Contact</a>
 
 </div>
 </header>
