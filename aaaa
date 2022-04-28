@@ -1,0 +1,120 @@
+ORG 0H
+SJMP FUNCTION
+ORG 40H
+N: DB "23" ;40H=0x32H,41H=0x33H 
+DB 0
+N2: DB "58" ;43H=0x35H,44H=0x38H
+DB 0
+
+ORG 50H
+FUNCTION:
+;R0 has pointer to ASCII value
+MOV R7, #12
+MOV R0, #60H ;
+MOV @R0, #0
+INC R0
+MOV @R0, #1
+INC R0
+MOV @R0, #2
+INC R0
+MOV @R0, #3
+INC R0
+MOV @R0, #4
+INC R0
+MOV @R0, #5
+INC R0
+MOV @R0, #6
+INC R0
+MOV @R0, #7
+INC R0
+MOV @R0, #8
+INC R0
+MOV @R0, #9
+INC R0
+MOV @R0, #10
+
+;decimal value for first number
+MOV N2, #10 ;calculate 10th digit
+MOV DPTR, #40H ;set pointer to start o first number
+MOV N, #0
+MOVC N, @N+DPTR ;get value of 10th digit
+ADD N, #48 ;offset for map
+MOV R1, N ;R1 now points to the decimal value for the ascii char
+CLR N
+MOV N, @R1 ;put R1 into N
+MOV R6, N ;store the decimal value in R6
+INC DPTR ;increment pointer
+
+WHILE1:
+MOV N, #0 ;putting 0 into N
+MOVC N, @N+DPTR ;get value of 10th digit
+CJNE N, #0,  CONTINUE ;check if the current ascii char is 0
+SJMP BREAK1 
+CONTINUE:
+MOV N, R6 ;Multiply current R6
+MOV N2, #10 ;put 10 into B
+MUL NN2 ;multiply Nnd B to get the decimal value of what's been seen
+MOV R6, N ;store in R6
+
+MOV N, #0 ;put 0 into N
+MOVC N, @N+DPTR ;get next character
+ADD N, #48 ;offset
+MOV R1, N ;R1 points to decimal value
+CLR N
+MOV N, @R1 ;place the decimal value in the accumulator
+ADD N, R6 ;add to current count 
+MOV R6, N ;store in R6
+INC DPTR ;increment pointer
+SJMP WHILE1
+BREAK1:
+
+INC DPTR
+
+;decimal value for second number
+MOV N2, #10
+MOV N, #0
+MOVC N, @N+DPTR
+ADD N, #48 
+MOV R1, N
+CLR N
+MOV N, @R1
+MOV R5, N
+INC DPTR
+
+WHILE2:
+MOV N, #0
+MOVC N, @N+DPTR
+CJNE N, #0,  CONTINUE2
+SJMP BREAK2
+CONTINUE2:
+MOV N, R5 
+MOV N2, #10
+MUL NN2
+MOV R5, N
+
+MOV N, #0
+MOVC N, @N+DPTR
+ADD N, #48
+MOV R1, N 
+CLR N
+MOV N, @R1
+ADD N, R5
+MOV R5, N
+
+
+INC DPTR
+SJMP WHILE2
+BREAK2:
+
+
+MOV N, R6 ;first number
+MOV N2, R5 ;second number
+MUL NN2 ;multiplication
+
+;MSB stored in B
+MOV R1, #40H
+MOV @R1, N2 
+
+;LSB stored in N
+MOV R1, #41H
+MOV @R1, N
