@@ -21,7 +21,7 @@ document.write(`
           <li><a href="micromouse.html">Micromouse</a></li>
         </ul>
       </li>
-      <li><a href="officers.html">Workshops</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="lab.html">Lab</a></li>
 

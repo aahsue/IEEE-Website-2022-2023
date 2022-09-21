@@ -1800,19 +1800,22 @@ section {
   border: 1px solid #e0e5e2;
 }
 
-#test .footer-newsletter form input[type=email] {
-  border: 0;
-  padding: 4px 8px;
-  width: calc(100% - 100px);
+#test .test-btn {
+  position: absolute;
+  margin-left: 22px;
+  background: #4b9bca;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
 }
 
-#test .footer-newsletter form input[type=submit] {
+#test .subscribe  {
   position: absolute;
-  top: -1px;
-  right: -1px;
-  bottom: -1px;
   border: 0;
-  background: none;
+  background: transparent;
   font-size: 16px;
   padding: 0 20px 2px 20px;
   background: #4b9bca;
@@ -1956,18 +1959,17 @@ input[type=checkbox] {
 }
 
 .popup__overlay {
-  position: fixed;
+  /* position: absolute;
   z-index: 1;
   display: block;
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
-  background: #000000b3;
+  width: 100%; */
 }
 
 .popup__wrapper {
-  position: fixed;
+  /* position: absolute;
   z-index: 9;
   width: 80%;
   max-width: 1200px;
@@ -1976,7 +1978,7 @@ input[type=checkbox] {
   transform: translate(-50%, -50%);
   border-radius: 8px;
   padding: 58px 32px 32px 32px;
-  background: #fff;
+  background: #fff; */
 }
 
 .popup__close {
